@@ -1,4 +1,4 @@
-                                                      Differential Equation Solver
+                                           Differential Equation Solver
 
 An advanced AI-powered ODE Solver that supports full SymPy Derivative(...) notation, symbolic & numeric solving, fast plotting, and an AI-generated step-by-step explanation engine.
 
