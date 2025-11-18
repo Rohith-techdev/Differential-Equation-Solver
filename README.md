@@ -41,111 +41,133 @@ Example input:
 
 Plotting is optimized using:
 
-lambdify() for symbolic fast evaluation
+     lambdify() for symbolic fast evaluation
 
-250-point dynamic mesh
+     250-point dynamic mesh
 
-numeric fallback via scipy.solve_ivp
+    numeric fallback via scipy.solve_ivp
 
 🔹 3. AI-Generated Explanations
 
 Two modes:
 
-✔ Simple Explanation
+    ✔ Simple Explanation
 
 Summarizes the solution in 3 short steps.
 
-✔ Step-by-Step Engine
+    ✔ Step-by-Step Engine
 
 AI solves the equation step by step:
 
-Start Step-by-Step
+    Start Step-by-Step
 
-Generate More Steps
+    Generate More Steps
 
-Stops automatically after Verification
+    Stops automatically after Verification
 
-Easy to read, no long paragraphs
+    Easy to read, no long paragraphs
 
-Powered by Ollama + Qwen 2.5 (1.5B) (local AI model).
+    Powered by Ollama + Qwen 2.5 (1.5B) (local AI model).
 
 🔹 4. Clean UI
 
 Built with Streamlit:
 
-Simple input box
+    Simple input box
 
-Real-time progress indicator
+    Real-time progress indicator
 
-Fast / Exact plot mode
+    Fast / Exact plot mode
 
-Complete explanation section
+    Complete explanation section
 
 🧠 Example Screenshot
+First interface: 
 
-(Add your own screenshot here)
+   ![Screenshot_18-11-2025_161617_localhost](https://github.com/user-attachments/assets/28355a04-a32b-4405-9f2a-599b28386dab)
+Answer and Plot:
 
-![App Screenshot](screenshot.png)
+  ![Screenshot_18-11-2025_16173_localhost](https://github.com/user-attachments/assets/01e94959-b20b-4f5f-b468-27b7b5dcc638)
+Steps:
+    
+  ![Screenshot_18-11-2025_161734_localhost](https://github.com/user-attachments/assets/e23344ec-52be-4d2c-b73a-01526695343d)
 
 🛠 Installation
-1. Clone the repository
-git clone https://github.com/Rohith-techdev/Differential-Equation-Solver.git
-cd Differential-Equation-Solver
 
-2. Install required libraries
-pip install -r requirements.txt
+1. Clone the repository:
 
-3. Install Ollama (for AI explanations)
+       git clone https://github.com/Rohith-techdev/Differential-Equation-Solver.git
 
+       cd Differential-Equation-Solver
+
+2. Install required libraries:
+
+       pip install -r requirements.txt
+
+3. Install Ollama (for AI explanations):
 Download Ollama:
-👉 https://ollama.com/
+
+       https://ollama.com/
 
 Pull the model:
 
-ollama pull qwen2.5:1.5b
+     ollama pull qwen2.5:1.5b
 
 ▶ Run the App
-streamlit run app.py
+
+     streamlit run app.py
 
 
 The browser will open automatically.
 
+
+
 📚 How It Works
 1️⃣ Parse equation
-
-Reads Derivative(y(x), x, ...) and converts it to SymPy expression.
+             
+        Reads Derivative(y(x), x, ...) and converts it to SymPy expression.
 
 2️⃣ Detect ODE order
-
-Automatically detects 1st, 2nd, 3rd… order.
+   
+        Automatically detects 1st, 2nd, 3rd… order.
 
 3️⃣ Solve Symbolically
 
-Uses dsolve() when possible.
+     Uses dsolve() when possible.
 
 4️⃣ Numeric Fallback
-
-If symbolic fails, converts ODE → system → integrates using solve_ivp.
+  
+      If symbolic fails, converts ODE → system → integrates using solve_ivp.
 
 5️⃣ Plotting
 
-Uses ultra-fast lambdify plotting.
+     Uses ultra-fast lambdify plotting.
 
 6️⃣ AI Explanation
 
-AI breaks the solution into steps.
+     AI breaks the solution into steps.
 
-🧩 Supported Equation Examples
-Derivative(y(x), x) + y(x) = 0
-Derivative(y(x), x) - 3*y(x) = exp(x)
-Derivative(y(x), x, x) + y(x) = cos(x)
-Derivative(y(x), x, x, x) + 2*Derivative(y(x), x, x) + y(x) = 0
-x^2*Derivative(y(x), x, x) + x*Derivative(y(x), x) + y(x) = 0
-Derivative(y(x), x, x) + 2*Derivative(y(x), x) + y(x) = exp(x)
 
-📦 Project Structure
-Differential-Equation-Solver/
-│── app.py
-│── requirements.txt
-│── README.md
-└── .gitignore
+
+Supported Equation Examples:
+
+Equation 1:
+    
+    Derivative(y(x), x) + y(x) = 0
+Equation 2:
+
+    Derivative(y(x), x) - 3*y(x) = exp(x)
+Equation 3:
+
+    Derivative(y(x), x, x) + y(x) = cos(x) 
+Equation 4:
+    
+    Derivative(y(x), x, x, x) + 2*Derivative(y(x), x, x) + y(x) = 0
+Equation 5:
+    
+    x^2*Derivative(y(x), x, x) + x*Derivative(y(x), x) + y(x) = 0
+Equation 6:
+    
+    Derivative(y(x), x, x) + 2*Derivative(y(x), x) + y(x) = exp(x)
+    
+     
