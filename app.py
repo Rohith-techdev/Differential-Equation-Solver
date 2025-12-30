@@ -9,7 +9,6 @@ from scipy.integrate import solve_ivp
 import ollama
 import time
 
-
 if "step_text" not in st.session_state:
     st.session_state.step_text = ""
 
@@ -22,9 +21,6 @@ if "step_started" not in st.session_state:
 if "step_prompt" not in st.session_state:
     st.session_state.step_prompt = ""
 
-
-
-
 def warmup():
     try:
         ollama.chat(
@@ -35,7 +31,6 @@ def warmup():
         pass
 
 warmup()
-
 
 def simple_explain(eq, sol):
     prompt = f"""
@@ -50,15 +45,11 @@ Solution: {sol}
     )
     return r["message"]["content"]
 
-
-
 def detect_order(expr):
     ds = expr.atoms(Derivative)
     if not ds:
         return 0
     return max(len(d.args) - 1 for d in ds)
-
-
 
 
 def extract_rhs(expr, order):
@@ -80,9 +71,6 @@ def extract_rhs(expr, order):
             return None
 
     return None
-
-
-
 
 def make_rhs_func(rhs_expr):
     x = symbols('x')
@@ -116,9 +104,6 @@ def make_rhs_func(rhs_expr):
 
     return fast_rhs
 
-
-
-
 def build_system(expr, order):
     rhs = extract_rhs(expr, order)
     if rhs is None:
@@ -137,8 +122,6 @@ def build_system(expr, order):
 
     return system
 
-
-
 def plot_symbolic_fast(sol_rhs, a, b):
     x = symbols('x')
     f = lambdify(x, sol_rhs, "numpy")
@@ -149,8 +132,6 @@ def plot_symbolic_fast(sol_rhs, a, b):
     ax.plot(xs, ys, linewidth=2)
     ax.grid(True)
     return fig
-
-
 
 
 st.set_page_config(page_title="Differential Equation Solver", layout="wide")
@@ -170,8 +151,6 @@ mode = st.radio("Plot Mode", ["Fast (recommended)", "Exact Symbolic"])
 col1, col2 = st.columns(2)
 x_start = col1.number_input("Start x", value=0.0)
 x_end = col2.number_input("End x", value=5.0)
-
-
 
 if st.button("Solve"):
 
@@ -279,8 +258,6 @@ Solution:
 Begin with Step 1.
 """
 
-
-
 st.subheader("🔵 Step-by-Step Solution")
 
 
@@ -303,7 +280,6 @@ if st.button("Start Step-by-Step Explanation"):
         st.session_state.step_finished = True
 
     st.rerun()
-
 
 
 if st.session_state.step_started:
